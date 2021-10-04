@@ -4,12 +4,8 @@ then
 else
 	dir=~/bug/$1
 	mkdir -p $dir
-	echo "subfinder"
-	subfinder -d $1 | anew  $dir/$1_subdomains; 
-	echo "assetfinder"
-	assetfinder  --subs-only $1  |  anew  $dir/$1_subdomains; 
-	echo "crt.sh"
-	curl -s https://crt.sh/\?q\=\%.$1\&output\=json | jq -r '.[].name_value' | sed 's/\*\.//g' | sort -u | anew $dir/$1_subdomains;
+	echo "crt.sh" # The name should be specified with echo while contributing
+	curl -s https://crt.sh/\?q\=\%.$1\&output\=json | jq -r '.[].name_value' | sed 's/\*\.//g' | sort -u | anew $dir/$1_subdomains; # oneliner command that fetches results from crt.sh
 	echo "rapiddns"
 	curl -s "https://rapiddns.io/subdomain/$1?full=1#result" | grep "<td><a" | cut -d '"' -f 2 | grep http | cut -d '/' -f3 | sed 's/#results//g' | sort -u | anew $dir/$1_subdomains;
 	echo "bufferoverflow"
@@ -24,8 +20,5 @@ else
 	curl -s "https://jldc.me/anubis/subdomains/$1" | grep -Po "((http|https):\/\/)?(([\w.-]*)\.([\w]*)\.([A-z]))\w+" | sort -u | anew $dir/$1_subdomains;
 	echo "sonar"
 	curl --silent https://sonar.omnisint.io/subdomains/$1  | grep -oE "[a-zA-Z0-9._-]+\.twitter.com" | sort -u | anew $dir/$1_subdomains;
-	echo "finddomain"
-	findomain -t $1 | anew $dir/$1_subdomains;
-	echo "knockpy"
-	knockpy $1 | anew $dir/$1_subdomains;
+	#add more oneliners like the one above if you find more :)
 fi
