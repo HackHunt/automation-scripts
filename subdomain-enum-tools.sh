@@ -12,3 +12,6 @@ else
     subfinder -d $1 | anew  $dir/$1_subdomains; 
     echo "assetfinder"
     assetfinder  --subs-only $1  |  anew  $dir/$1_subdomains; 
+    echo "subdomanizer"
+    subdomainzer -u $1 |  anew  $dir/$1_subdomains; 
+    
