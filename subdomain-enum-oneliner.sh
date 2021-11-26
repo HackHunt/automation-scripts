@@ -22,5 +22,8 @@ else
 	curl --silent https://sonar.omnisint.io/subdomains/$1  | grep -oE "[a-zA-Z0-9._-]+\.twitter.com" | sort -u | anew $dir/$1_subdomains;
 	echo "JDLC"
 	curl -s "https://jldc.me/anubis/subdomains/domain.com" | grep -Po "((http|https):\/\/)?(([\w.-]*)\.([\w]*)\.([A-z]))\w+" | sort -u  | anew $dir/$1_subdomains;
+	echo "Alldomains"
+	wget  https://raw.githubusercontent.com/0x240x23elu/alldomains/master/alldomain/$1.com.txt | sort -u  | anew $dir/$1_subdomains;
+	
 	#add more oneliners like the one above if you find more :)
 fi
