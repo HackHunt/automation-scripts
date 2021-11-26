@@ -8,3 +8,8 @@ To contribute to this project you need to choose between one liner script or too
 # oneliners
 One liner script  fetches as many subdomains without the help of any CLI tools which would increase efficeny. While contributing make sure you mention the name of the oneliner or the name of the site from which it's pulling information. For more reference see the oneliner shell script.
 # Tools
+Subdomanizer<br>
+Subfinder<br>
+Assetfinder<br>
+knockpy<br>
+findomain<br>
